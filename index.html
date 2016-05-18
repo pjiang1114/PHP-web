@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Search</title>
+
+
+</head>
+<body>
+<h3>Search Order by entering CPU info!</h3>
+<form id="form" name="form" action="search.php" method="post">
+		
+		<p>	Please select what you want to search for <br></p>
+		
+		<table>
+			<tr>
+			<td><input type="checkbox" name="check_list[]" value="all"/><label>ALL</label><br>
+				<input type="checkbox" name="check_list[]" value="cpu_id"/><label>CPU ID</label><br>
+				<input type="checkbox" name="check_list[]" value="speed_mhz"/><label>CPU SPEED</label><br>
+				<input type="checkbox" name="check_list[]" value="cust_num"/><label>CUSTOMER ID</label><br>
+				<input type="checkbox" name="check_list[]" value="name"/><label>CUSTOMOR NAME</label><br>
+				<input type="checkbox" name="check_list[]" value="addr"/><label>CUSTOMER ADDRESS</label><br>
+				<input type="checkbox" name="check_list[]" value="order_num"/><label>ORDER NUMBER</label><br>
+				<input type="checkbox" name="check_list[]" value="ram_mhz"/><label>MEMORY SIZE</label><br>
+			</td>
+			</tr>
+		</table>
+		<br>
+	
+		<table>
+ <tr><th>Searching Constains: </th></tr>
+     <tr>
+       <td>CPU name </td>
+       <td></td>
+        <td><input type="text" name="cpu_name" id="cpu_name" ></td>
+        <td></td>
+     </tr>
+     <tr>
+       <td>CPU speed </td>
+       <td><select name="cpu_speed_option">
+              <option value=">"> > </option>
+              <option value="="> = </option>
+              <option value="<"> &lt; </option>
+	       </select></td>
+       <td><input type="text" name="cpu_speed" id="cpu_speed" ></td>
+       <td></td>
+     </tr>
+     <tr>
+       <td>Momery size </td>
+       <td><select name="ram_size_option">
+              <option value=">"> > </option>
+              <option value="="> = </option>
+              <option value="<"> &lt; </option>
+	       </select></td>
+       <td><input type="text" name="ram_size" id="ram_size" ></td>
+        <td></td>
+     </tr>
+     <tr>
+       <td><input type="reset" name="clear"></td>
+       <td></td>
+       <td><input type="submit" name="search"></td>
+       <td></td>
+     </tr>     
+  </table>
+</form>
+
+</body>
+</html>
