@@ -131,42 +131,55 @@ $tables=TRUE;
 	}
 
 echo "tables:".$tables."</br>"."selctions:".$selection."</br>"; 
-
+echo"<br>str ".strpos($tables, "5")."</br>";
 if(strpos($tables,"cpu") && strpos($tables,"customer") && !strpos($tables,"orders"))
 { 
 	$tables="cpu, customer, orders ";
 	$cond =" cpu.cpu_id=orders.cpu AND customer.cust_num=orders.cust_num ";
+  //echo "1";
 }
 elseif(strpos($tables,"cpu") && !strpos($tables,"customer") && strpos($tables,"orders"))
 {
 	$tables="cpu, orders ";
 	$cond =" cpu.cpu_id=orders.cpu ";
+  //echo "2";
 }
 elseif(!strpos($tables,"cpu") && strpos($tables,"customer") && strpos($tables,"orders"))
 {
 	$tables="customer, orders ";
 	$cond =" customer.cust_num=orders.cust_num ";
+  echo "3";
 }
 elseif(strpos($tables,"cpu") && !strpos($tables,"customer") && !strpos($tables,"orders"))
 {
 	$tables="cpu ";
 	$cond ="";
+  //echo "4";
 }
 elseif(!strpos($tables,"cpu") && strpos($tables,"customer") && !strpos($tables,"orders"))
 {
 	$tables="customer ";
 	$cond ="";
+ // echo "5";
 }
 elseif(!strpos($tables,"cpu") && !strpos($tables,"customer") && strpos($tables,"orders"))
 {
 	$tables="orders ";
 	$cond ="";
+  //echo "6";
 }
-elseif(strpos($tables,"cpu") && strpos($tables,"customer") && strpos($tables,"orders"))
+//elseif(strpos($tables,"cpu") && strpos($tables,"customer") && strpos($tables,"orders"))
+//{
+//	$tables="cpu, customer, orders ";
+//	$cond =" cpu.cpu_id=orders.cpu AND customer.cust_num=orders.cust_num ";
+//}
+else
 {
-	$tables="cpu, customer, orders ";
-	$cond =" cpu.cpu_id=orders.cpu AND customer.cust_num=orders.cust_num ";
+  $tables="cpu, customer, orders ";
+  $cond ="";
+  echo "7";
 }
+echo "tables:".$tables."</br>"."selctions:".$selection."</br>"; 
 $servername = "localhost";
 $username = "root";
 $password = "";
