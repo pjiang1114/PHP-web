@@ -32,19 +32,15 @@ $tables=TRUE;
 	{ //echo "Search selection(s) is(are) : ";
       foreach($_POST['check_list'] as $select)
       { 
-        echo "$select</br>";
-        if(strpos($select,"all"))
-        {
-             $tables="cpu, customer, orders";
-             $selection=$s_orders_order_num.",".$s_customer_cust_num.",".
-                        $s_customer_name.",".$s_customer_addr.",".
-                        $s_orders_cpu.",".$s_cpu_speed_mhz.",".$s_orders_ram_mhz;
-             break;
-        }
-        else
-        {
+        //echo "$select </br>";
       	 switch ($select){
-
+          case "all":
+            $tables="cpu, customer, orders";
+             $selection=$s_orders_order_num.",".$s_customer_cust_num.","
+                       .$s_customer_name.",".$s_customer_addr.","
+                       .$s_orders_cpu.",".$s_cpu_speed_mhz.",".$s_orders_ram_mhz;
+                       //echo "enter all";
+                       break;
       		case  "cpu_id":
       		    if(strpos($tables,"cpu"))
 	      		  {
@@ -133,47 +129,48 @@ $tables=TRUE;
 	      		     $selection.=",".$s_orders_ram_mhz ;
 	      		     break;
       	       }
+           default:
+               break;
       	}
-      }//end if not "all"
     }//end foreach
 	}//end if empty
 
 //echo "tables:".$tables."</br>"."selctions:".$selection."</br>"; 
-if(strpos($tables,"cpu") && strpos($tables,"customer") && !strpos($tables,"orders"))
+if(strpos($tables,"cpu")===0 && strpos($tables,"customer") && !strpos($tables,"orders"))
 { 
 	$tables="cpu, customer, orders ";
 	$cond =" cpu.cpu_id=orders.cpu AND customer.cust_num=orders.cust_num ";
-  echo "1";
+  //echo "1";
 }
-elseif(strpos($tables,"cpu") && !strpos($tables,"customer") && strpos($tables,"orders"))
+elseif(strpos($tables,"cpu")===0 && !strpos($tables,"customer") && strpos($tables,"orders"))
 {
 	$tables="cpu, orders ";
 	$cond =" cpu.cpu_id=orders.cpu ";
-  echo "2";
+  //echo "2";
 }
-elseif(!strpos($tables,"cpu") && strpos($tables,"customer") && strpos($tables,"orders"))
+elseif(!strpos($tables,"cpu")===0 && strpos($tables,"customer") && strpos($tables,"orders"))
 {
 	$tables="customer, orders ";
 	$cond =" customer.cust_num=orders.cust_num ";
-  echo "3";
+  //echo "3";
 }
-elseif(strpos($tables,"cpu") && !strpos($tables,"customer") && !strpos($tables,"orders"))
+elseif(strpos($tables,"cpu")===0 && !strpos($tables,"customer") && !strpos($tables,"orders"))
 {
 	$tables="cpu ";
 	$cond ="1";
-  echo "4";
+  //echo "4";
 }
-elseif(!strpos($tables,"cpu") && strpos($tables,"customer") && !strpos($tables,"orders"))
+elseif(!strpos($tables,"cpu")===0 && strpos($tables,"customer") && !strpos($tables,"orders"))
 {
 	$tables="customer ";
 	$cond ="1";
-  echo "5";
+  //echo "5";
 }
-elseif(!strpos($tables,"cpu") && !strpos($tables,"customer") && strpos($tables,"orders"))
+elseif(!strpos($tables,"cpu")===0 && !strpos($tables,"customer") && strpos($tables,"orders"))
 {
 	$tables="orders ";
 	$cond ="1";
-  echo "6";
+  //echo "6";
 }
 //elseif(strpos($tables,"cpu") && strpos($tables,"customer") && strpos($tables,"orders"))
 //{
@@ -184,7 +181,7 @@ else
 {
   $tables="cpu, customer, orders ";
   $cond ="cpu.cpu_id=orders.cpu AND customer.cust_num=orders.cust_num";
-  echo "7";
+  //echo "7";
 }
 
 $servername = "localhost";
@@ -226,9 +223,7 @@ if(!empty($ram_size))
 	$query.="AND orders.ram_mhz $opt2 $ram_size";
 }
 $query.=";";
-	//	"AND cpu.cpu_id = ".$cpu_id ." AND cpu.speed_mhz ".
-      //  $opt1." ".$cpu_speed." AND orders.ram_mhz ".$opt2." ".$ram_size.";";
-  // echo "$query </br>";  
+ 
 echo "<h3>$query</h3>";      
 $result = mysql_query($query);
 if (!$result) {
