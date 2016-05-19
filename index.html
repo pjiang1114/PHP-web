@@ -8,20 +8,63 @@
 </head>
 <body>
 <h3>Search Order by entering CPU info!</h3>
+<script langauge="javascript" type="text/javascript" >
+function exefunction(){
+                var lfckv1 = document.getElementById("lifecheck1").checked;
+                var lfckv2 = document.getElementById("lifecheck2").checked;
+                var lfckv3 = document.getElementById("lifecheck3").checked;
+                var lfckv4 = document.getElementById("lifecheck4").checked;
+                var lfckv5 = document.getElementById("lifecheck5").checked;
+                var lfckv6 = document.getElementById("lifecheck6").checked;
+                var lfckv7 = document.getElementById("lifecheck7").checked;
+                var lfckv8 = document.getElementById("lifecheck8").checked;
+                if(!lfckv1 && !lfckv2 &&!lfckv3 &&!lfckv4 &&
+                   !lfckv5 && !lfckv6 &&!lfckv7 &&!lfckv8 )
+                {
+                  alert("At least one of the checkbox should be checked!");
+                  return false;
+                }
+                else
+                {
+                  var cpuName = document.getElementById("cpu_name").value;
+                  var cpuSpeed = document.getElementById("cpu_speed").value;
+                  var ramSize = document.getElementById("ram_size").value;
+                  if( cpuName || cpuSpeed)
+                  {
+                    if( !lfckv1 && !lfckv2 && !lfckv3)
+                    {
+                      alert("At least one of the \"CPU\" checkboxs or the \"ALL\"  checkbox should be checked!");
+                      document.getElementById("lifecheck1").focus();
+                      return false;
+                    }
+                  }
+                  if(ramSize)
+                  {
+                    if(!lfckv1 && !lfckv4 && !lfckv5 && !lfckv6)
+                    {
+                      alert("At least one of the \"CUSTOMER\" checkboxs or the \"ALL\"  checkbox should be checked!");
+                      document.getElementById("lifecheck1").focus();
+                      return false;
+                    }
+                  }
+                  
+                }
+            }
+</script>
 <form id="form" name="form" action="search.php" method="post">
 		
 		<p>	Please select what you want to search for <br></p>
 		
 		<table>
 			<tr>
-			<td><input type="checkbox" name="check_list[]" value="all"/><label>ALL</label><br>
-				<input type="checkbox" name="check_list[]" value="cpu_id"/><label>CPU ID</label><br>
-				<input type="checkbox" name="check_list[]" value="speed_mhz"/><label>CPU SPEED</label><br>
-				<input type="checkbox" name="check_list[]" value="cust_num"/><label>CUSTOMER ID</label><br>
-				<input type="checkbox" name="check_list[]" value="name"/><label>CUSTOMOR NAME</label><br>
-				<input type="checkbox" name="check_list[]" value="addr"/><label>CUSTOMER ADDRESS</label><br>
-				<input type="checkbox" name="check_list[]" value="order_num"/><label>ORDER NUMBER</label><br>
-				<input type="checkbox" name="check_list[]" value="ram_mhz"/><label>MEMORY SIZE</label><br>
+			<td><input id="lifecheck1" type="checkbox" name="check_list[]" value="all"/><label>ALL</label><br>
+				<input id="lifecheck2" type="checkbox" name="check_list[]" value="cpu_id"/><label>CPU ID</label><br>
+				<input id="lifecheck3" type="checkbox" name="check_list[]" value="speed_mhz"/><label>CPU SPEED</label><br>
+				<input id="lifecheck4" type="checkbox" name="check_list[]" value="cust_num"/><label>CUSTOMER ID</label><br>
+				<input id="lifecheck5" type="checkbox" name="check_list[]" value="name"/><label>CUSTOMOR NAME</label><br>
+				<input id="lifecheck6" type="checkbox" name="check_list[]" value="addr"/><label>CUSTOMER ADDRESS</label><br>
+				<input id="lifecheck7" type="checkbox" name="check_list[]" value="order_num"/><label>ORDER NUMBER</label><br>
+				<input id="lifecheck8" type="checkbox" name="check_list[]" value="ram_mhz"/><label>MEMORY SIZE</label><br>
 			</td>
 			</tr>
 		</table>
@@ -58,7 +101,7 @@
      <tr>
        <td><input type="reset" name="clear"></td>
        <td></td>
-       <td><input type="submit" name="search"></td>
+       <td><input type="submit" name="search" onclick="return exefunction()"></td>
        <td></td>
      </tr>     
   </table>
