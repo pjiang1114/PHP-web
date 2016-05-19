@@ -1,7 +1,7 @@
 # PHP-web
 
 This is an implementation from the course project, using HTML+Javascript+PHP+MySql. 
-index.html is the default entrance of this websit. It handles input interface and initial check of input.
+index.html is the default entrance of this website. It handles input interface and initial check of input.
 search.php is the default backend logic service to provide the search result from cs3010.sql with the input of index.html 
 This version does not provide privileges of creating of updating the database.
 
@@ -9,7 +9,7 @@ Instruction:
 
 1. index.html:
 
-   User could test this webset using XAMPP. Input with checkboxes and conditions from textboxes. "All" has the highest priority which will ignore all other checkboxes.
+   User could test this website using XAMPP. Input with checkboxes and conditions from textboxes. "All" has the highest priority which will ignore all other checkboxes.
 
 2. search.php:
 
