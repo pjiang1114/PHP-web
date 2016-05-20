@@ -7,7 +7,7 @@
 
 </head>
 <body>
-<h3>Search Order by entering CPU info!</h3>
+<h3>CPU Sale Information Search</h3>
 <script langauge="javascript" type="text/javascript" >
 function exefunction(){
                 var lfckv1 = document.getElementById("lifecheck1").checked;
@@ -62,25 +62,25 @@ function exefunction(){
 </script>
 <form id="form" name="form" action="search.php" method="post">
 		
-		<p>	Please select what you want to search for <br></p>
+		<h4>	Please select fields that you want to search in </h4>
 		
 		<table>
 			<tr>
-			<td><input id="lifecheck1" type="checkbox" name="check_list[]" value="all"/><label>ALL</label><br>
-				<input id="lifecheck2" type="checkbox" name="check_list[]" value="cpu_id"/><label>CPU ID</label><br>
+			<td><input id="lifecheck1" type="checkbox" name="check_list[]" value="all"/><label>ALL FIELDS</label><br>
+				<input id="lifecheck2" type="checkbox" name="check_list[]" value="cpu_id"/><label>CPU NAME</label><br>
 				<input id="lifecheck3" type="checkbox" name="check_list[]" value="speed_mhz"/><label>CPU SPEED</label><br>
 				<input id="lifecheck4" type="checkbox" name="check_list[]" value="cust_num"/><label>CUSTOMER ID</label><br>
 				<input id="lifecheck5" type="checkbox" name="check_list[]" value="name"/><label>CUSTOMOR NAME</label><br>
 				<input id="lifecheck6" type="checkbox" name="check_list[]" value="addr"/><label>CUSTOMER ADDRESS</label><br>
 				<input id="lifecheck7" type="checkbox" name="check_list[]" value="order_num"/><label>ORDER NUMBER</label><br>
-				<input id="lifecheck8" type="checkbox" name="check_list[]" value="ram_mhz"/><label>MEMORY SIZE</label><br>
+				<input id="lifecheck8" type="checkbox" name="check_list[]" value="ram_mhz"/><label>RAM FREQUENCY</label><br>
 			</td>
 			</tr>
 		</table>
 		<br>
 	
 		<table>
- <tr><th>Searching Constains: </th></tr>
+ <tr><th>Constains:(optional) </th></tr>
      <tr>
        <td>CPU name </td>
        <td></td>
@@ -98,7 +98,7 @@ function exefunction(){
        <td></td>
      </tr>
      <tr>
-       <td>Momery size </td>
+       <td>RAM Frequency(Mhz)</td>
        <td><select name="ram_size_option">
               <option value=">"> > </option>
               <option value="="> = </option>
